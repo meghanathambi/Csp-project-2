@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Water Awareness Project</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: sans-serif;
+      background: linear-gradient(to right, #e0f7fa, #ffffff);
+    }
+
+    .top-bar {
+      display: flex;
+      align-items: center;
+      background-color: #004466;
+      color: white;
+      padding: 1rem;
+    }
+
+    .top-bar img {
+      width: 80px;
+      margin-right: 1rem;
+      flex-shrink: 0;
+    }
+
+    .top-bar .info {
+      line-height: 1.4;
+    }
+
+    .header {
+      text-align: center;
+      padding: 1rem;
+      font-size: 1.6rem;
+      font-weight: bold;
+      background-color: #007399;
+      color: white;
+    }
+
+    .buttons {
+      text-align: center;
+      background-color: #eeeeee;
+      padding: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .buttons button {
+      margin: 0.5rem;
+      padding: 10px 15px;
+      font-size: 1rem;
+      border: none;
+      border-radius: 5px;
+      background-color: #004466;
+      color: white;
+      cursor: pointer;
+    }
+
+    .buttons button:hover {
+      background-color: #006699;
+    }
+
+    #content {
+      max-width: 900px;
+      margin: 1rem auto;
+      background-color: rgba(255, 255, 255, 0.95);
+      padding: 2rem;
+      border-radius: 10px;
+      color: #000;
+    }
+
+    a {
+      color: blue;
+    }
+
+    a:hover {
+      color: darkblue;
+    }
+
+    /* Added styles for activity log */
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin-top: 1rem;
+    }
+    th, td {
+      border: 1px solid #004466;
+      padding: 8px;
+      text-align: left;
+    }
+    th {
+      background-color: #007399;
+      color: white;
+    }
+    .table-controls {
+      margin-top: 1rem;
+      text-align: center;
+    }
+    .nav-btn {
+      margin: 0 0.5rem;
+      padding: 8px 15px;
+      background-color: #004466;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .nav-btn:hover {
+      background-color: #006699;
+    }
+  </style>
+</head>
+<body>
+  <div class="top-bar">
+    <img src="https://yamunika302.github.io/csp-1/logo.jpg" alt="College Logo" />
+    <div class="info">
+      <strong>GEETHANJALI INSTITUTE OF SCIENCE AND TECHNOLOGY</strong><br/>
+      A unit of USHODAYA EDUCATIONAL SOCIETY<br/>
+      Approved by AICTE, New Delhi & Affiliated to JNTUA, Ananthapuram<br/>
+      NAAC 'A' Grade | ISO 9001:2015 | Recognized under Sec. 2(f) & 12(B) of UGC Act, 1956<br/>
+      3rd Mile, Bombay Highway, Gangavaram(V), Kovur(M), SPSR Nellore(Dt) – 524137
+    </div>
+  </div>
+
+  <div class="header">Community Service Project - Water Awareness</div>
+
+  <div class="buttons">
+    <button onclick="loadTab('home')">Home</button>
+    <button onclick="loadTab('introduction')">Introduction</button>
+    <button onclick="loadTab('abstract')">Abstract</button>
+    <button onclick="loadTab('survey')">Survey Data</button>
+    <button onclick="loadTab('conclusion')">Conclusion</button>
+    <button onclick="loadTab('activity')">Activity Log</button>
+    <button onclick="loadTab('questionnaire')">Questionnaire</button>
+    <button onclick="loadTab('photos')">Survey Photos</button>
+    <button onclick="loadTab('team')">Team Members</button>
+  </div>
+
+  <div id="content">
+    <!-- Dynamic content will appear here -->
+  </div>
+
+  <script>
+    const activityData = [
+      [
+        ["Day 1", "Visited Ranganayakulapeta and selected survey area"],
+        ["Day 2", "Conducted door-to-door interactions"],
+        ["Day 3", "Explained health risks from water pollution"],
+        ["Day 4", "Distributed feedback forms and collected responses"],
+        ["Day 5", "Awareness on clean water practices and sanitation"],
+        ["Day 6", "Follow-up interactions with residents for feedback"],
+        ["Day 7", "Compiled data and submitted report to Sachivalayam"]
+      ],
+      [
+        ["Day 1", "Visited Santhapeta, surveyed drainage issues"],
+        ["Day 2", "Educated families on water safety"],
+        ["Day 3", "Explained impact of waste disposal on health"],
+        ["Day 4", "Distributed feedback forms"],
+        ["Day 5", "Collected and analyzed responses"],
+        ["Day 6", "Submitted findings to Sachivalayam"],
+        ["Day 7", "Planned next area's visit"]
+      ],
+      [
+        ["Day 1", "Survey in Mulapeta"],
+        ["Day 2", "Door-to-door awareness on water waste"],
+        ["Day 3", "Observed sewer overflows and stagnant water"],
+        ["Day 4", "Educated residents on reporting issues"],
+        ["Day 5", "Feedback form collection"],
+        ["Day 6", "Data compilation"],
+        ["Day 7", "Reported issues to officials"]
+      ],
+      [
+        ["Day 1", "Revisited Ranganayakulapeta for black water issue"],
+        ["Day 2", "Documented visual samples of water"],
+        ["Day 3", "Educated about waterborne diseases"],
+        ["Day 4", "Awareness on water filtration and hygiene"],
+        ["Day 5", "Feedback collection"],
+        ["Day 6", "Report drafted"],
+        ["Day 7", "Submitted to Sachivalayam"]
+      ],
+      [
+        ["Day 1", "Prepared pH paper test materials for Santhapeta"],
+        ["Day 2", "Tested household water (yellowish green)"],
+        ["Day 3", "Explained results to families"],
+        ["Day 4", "Noted health complaints (stomach pain, tiredness)"],
+        ["Day 5", "Shared simple filtration tips"],
+        ["Day 6", "Revisited for confirmation"],
+        ["Day 7", "Submitted report"]
+      ],
+      [
+        ["Day 1", "Prepared for pH testing in Mulapeta"],
+        ["Day 2", "Conducted tests (pale green/yellow)"],
+        ["Day 3", "Noted visible water contamination"],
+        ["Day 4", "Educated on boiling and filtering"],
+        ["Day 5", "Recorded resident suggestions"],
+        ["Day 6", "Finalized report with visuals"],
+        ["Day 7", "Reported to officials"]
+      ]
+    ];
+
+    let currentWeek = 0;
+
+    function generateTable(index) {
+      const rows = activityData[index].map(([day, activity]) => `<tr><td>${day}</td><td>${activity}</td></tr>`).join('');
+      const prevBtn = index > 0 ? `<button class='nav-btn' onclick='navigateWeek(${index - 1})'>Previous</button>` : '';
+      const nextBtn = index < activityData.length - 1 ? `<button class='nav-btn' onclick='navigateWeek(${index + 1})'>Next</button>` : '';
+      return `
+        <table><tr><th>Day</th><th>Activity</th></tr>${rows}</table>
+        <div class='table-controls'>${prevBtn}${nextBtn}</div>
+      `;
+    }
+
+    function navigateWeek(index) {
+      currentWeek = index;
+      const content = `<h2>Activity Log – Week ${index + 1}</h2>` + generateTable(index);
+      updateContent(content);
+    }
+
+    function updateContent(html) {
+      document.getElementById("content").innerHTML = html;
+    }
+
+    function loadTab(tab) {
+      const content = document.getElementById("content");
+      if (tab === "home") {
+        content.innerHTML = `
+          <img src="https://www.mymathews.com/media/institute_banner/GIST_Banner.JPG" alt="Institute Banner" style="width:100%; max-width:900px; border-radius:10px; margin-bottom: 1rem;" />
+          <h2>Water Awareness Project</h2>
+          <p>Welcome to our Water Awareness Project.</p>
+          <p>Clean water is essential to life. Our mission is to spread awareness about the importance of water conservation and ensure access to clean water for all.</p>
+          <p>We believe that a brighter future starts with small steps: saving water, reducing pollution, and educating communities about sustainable practices. Through this platform, we aim to highlight challenges related to water scarcity and provide resources and solutions for a cleaner tomorrow.</p>
+          <p>Together, let's make every drop count!</p>
+        `;
+      } else if (tab === "introduction") {
+        content.innerHTML = `
+          <h2>Introduction</h2>
+          <p>We are students of Geethanjali Institute of Science and Technology, from the Computer Science and Engineering (CSE) department.</p>
+          <p>As part of our Community Service Project (CSP), we chose Water Pollution Awareness as our domain. Our mission is to highlight the pressing issues related to water pollution and create awareness about its harmful effects on health and the environment.</p>
+          <p>Over several weeks, we conducted detailed surveys in different localities, spoke to residents, documented water-related issues, and educated communities on clean water practices. We also performed pH tests to assess the quality of water in affected areas, collected feedback, and submitted detailed reports to the local Sachivalayam.</p>
+          <p>This project gave us an opportunity to work closely with the community and understand real-world problems while contributing meaningfully to a cleaner, healthier society.</p>
+          <p>We would like to express our heartfelt gratitude to our beloved guide <strong>Dr. Sindhuri Nasina, Associate Professor, Ph.D</strong>, who supported us throughout this journey. Her valuable insights, continuous encouragement, and mentorship played a crucial role in the successful completion of our project.</p>
+          <p><strong>Thank you!</strong></p>
+        `;
+      } else if (tab === "abstract") {
+        content.innerHTML = `
+          <h2>Abstract</h2>
+          <p>Water pollution is a growing problem in areas like Ranganayakula Peta, Santhapeta and Mulapeta. In these localities, water sources such as canals, drains, and small ponds are getting polluted due to improper waste disposal, drainage leakage, and dumping of garbage.</p>
+          <p>People living in these areas often use this water for daily needs, and polluted water is causing health problems like skin infections and stomach issues. The main causes of pollution here are household waste, plastic dumping, and sewage water mixing into fresh water sources.</p>
+          <p>In this project, we studied the local water pollution problems and interacted with residents to understand their difficulties. Our goal is to spread awareness about water cleanliness and suggest solutions like proper drainage systems, avoiding plastic usage, and keeping surroundings clean.</p>
+          <p>By taking small steps together, we can protect water and health in our communities.</p>
+        `;
+      } else if (tab === "survey") {
+        content.innerHTML = `
+          <h2>Survey Data</h2>
+          <p>[Present analyzed data, charts, or summaries from your surveys.]</p>
+        `;
+      } else if (tab === "conclusion") {
+        content.innerHTML = `
+          <h2>Conclusion</h2>
+          <p>[Summarize your findings, project impact, and future scope.]</p>
+        `;
+      } else if (tab === "activity") {
+        // Show the first week's activity log by default
+        currentWeek = 0;
+        content.innerHTML = `<h2>Activity Log – Week 1</h2>` + generateTable(0);
+      } else if (tab === "questionnaire") {
+        content.innerHTML = `
+          <h2>Questionnaire</h2>
+          <p>[Include questions asked in your survey or provide a downloadable link.]</p>
+        `;
+      } else if (tab === "photos") {
+        content.innerHTML = `
+          <h2>Survey Photos</h2>
+          <p>[Insert or link to photos taken during the survey.]</p>
+        `;
+      } else if (tab === "team") {
+        content.innerHTML = `
+          <h2>Team Members</h2>
+          <ul>
+            
+<link rel="stylesheet" href="members.css">
+<div class="content members-page">
+  <h1 class="page-title animated-title">Our Project Team</h1>
+
+  <div class="mentor-section">
+    <p>
+      Guided by our mentor <span class="mentor-name">Dr Sai Sindhuri Nasina, Ph.D ,Associate Professor(Department Of CSE)</span> who encouraged and directed us throughout this project with great enthusiasm and support.
+    </p>
+  </div>
+
+  <h2 class="section-title">Meet the Members</h2>
+
+  <div class="members-grid">
+    <div class="member-card">
+      <div class="avatar"></div>
+      <h3>Shaik. Khadarmunnisa</h3>
+      <p>3nd Year, CSE </p>
+    </div>
+
+    <div class="member-card">
+      <div class="avatar">SK</div>
+      <h3>Shaik. Muskhan</h3>
+      <p>3nd Year, CSE</p>
+    </div>
+
+    <div class="member-card">
+      <div class="avatar">SM</div>
+      <h3>Syed. Sophiya</h3>
+      <p>3nd Year, CSE</p>
+    </div>
+
+    <div class="member-card">
+      <div class="avatar">SS</div>
+      <h3>Thambi. Meghana</h3>
+      <p>3nd Year, CSE</p>
+       <div class="avatar">TM</div>
+    </div>
+  </div>
+
+  <div class="footer-note">
+    <p>— Project Completed by Students of CSE —</p>
+    <p>Geethanjali Institute of Science and Technology, SPSR Nellore</p>
+  </div>
+</div>
+        `;
+      }
+    }
+
+    // Load default tab on page load
+    loadTab("home");
+  </script>
+</body>
+</html>
